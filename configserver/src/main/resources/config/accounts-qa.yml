@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to MugiBank accounts related QA APIs "
+  contactDetails:
+    name: "John Doe - Developer"
+    email: "john@mugi.com"
+  onCallSupport:
+    - (555) 666-1234
+    - (555) 666-1345

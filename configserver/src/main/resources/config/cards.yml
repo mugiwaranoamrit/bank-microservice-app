@@ -1,0 +1,11 @@
+build:
+  version: "3.0"
+
+cards:
+  message: "Welcome to MugiBank accounts related local APIs "
+  contactDetails:
+    name: "Dragos Lech - Developer"
+    email: "dragos@mugibank.com"
+  onCallSupport:
+    - (412) 555-1234
+    - (412) 523-1345

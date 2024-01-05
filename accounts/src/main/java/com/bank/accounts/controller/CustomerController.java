@@ -59,7 +59,7 @@ public class CustomerController {
     public ResponseEntity<CustomerDetailsDto> fetchCustomerDetails(@RequestHeader("mugibank-correlation-id") String correlationID,
                                                                    @RequestParam @Pattern(regexp = "(^$|[0-9]{10})", message = "mobile number must be 10 digits")
                                                                    String mobileNumber){
-        logger.debug("fetchCustomerDetails method start");
+        logger.debug("fetchCustomerDetails method has started");
         CustomerDetailsDto customerDetailsDto = iCustomerService.fetchCustomerDetails(mobileNumber, correlationID);
         logger.debug("fetchCustomerDetails method end");
         return ResponseEntity.status(HttpStatus.OK).body(customerDetailsDto);

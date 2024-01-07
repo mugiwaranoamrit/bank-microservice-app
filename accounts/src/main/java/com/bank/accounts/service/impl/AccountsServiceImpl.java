@@ -48,6 +48,7 @@ public class AccountsServiceImpl implements IAccountsService {
         //customer.setCreatedBy("Mugi");audit implemented hence no use
         Customer savedCustomer = customerRepository.save(customer);
         Accounts savedAccounts = accountsRepository.save(createNewAccount(savedCustomer));
+        sendCommunication(savedAccounts,savedCustomer);
     }
 
     private void sendCommunication(Accounts accounts, Customer customer){
@@ -141,5 +142,24 @@ public class AccountsServiceImpl implements IAccountsService {
         customerRepository.deleteById(customer.getCustomerId());
         return true;
     }
+
+    /**
+     * @param accountNumber -Long
+     * @return boolean indicating if the update of communication status is successful or not
+     */
+    @Override
+    public boolean updateCommunicationStatus(Long accountNumber) {
+        boolean isUpdated = false;
+        if(accountNumber !=null ){
+            Accounts accounts = accountsRepository.findById(accountNumber).orElseThrow(
+                    () -> new ResourceNotFoundException("Account", "AccountNumber", accountNumber.toString())
+            );
+            accounts.setCommunicationSw(true);
+            accountsRepository.save(accounts);
+            isUpdated = true;
+        }
+        return  isUpdated;
+    }
+
 
 }
